@@ -3,23 +3,33 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | MultiJD</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>  
-    <script src="Build/UnityLoader.js"></script>
-    <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/webgl.json", {onProgress: UnityProgress});
-    </script>
+    <title>MattGen's Dev/Art Blog</title>
   </head>
   <body>
-    <div class="webgl-content">
-      <div id="gameContainer" style="width: 960px; height: 600px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">MultiJD</div>
-      </div>
-    </div>
+  <h1 align="center">MattGen's Dev/Art Blog</h1>
+  So yeah, I feel the need to have both a portfolio and a devblog.<br></br>Let's do this right !<br></br>
+  <h4>[20.02.18] Dev/Art Blog #1 - Tilemap editor in Unity</h4>
+  <table border = 0 cellspacing = 0 cellpadding = 0>
+  <tr height = 3 margin-left = 120><td>I was kind of proud yesterday to complete a C# square grid generator which instantiated meshes from a gameobjects list.</td></tr>
+  <tr><td>Here's how it worked :</td></tr> <tr><td><img src="Assets/20.02.18/Grid01.gif" align="center" width=616 heigth=424 title="Grid generator"></img></td></tr>
+  <tr><td>So <i>gridSize</i> is a public Integer variable which determines both <i>x</i> and <i>y</i> size of the grid.</td></tr>
+  <tr><td>Using a <i>for</i> loop, <i>i</i> increments on each loop. On each <i>i</i> incrementation, a new loop is launched which</td></tr>
+  <tr><td>also cycles until <i>j</i> reaches <i>gridSize</i>. Requesting a value of 3 for <i>gridSize</i> results in getting those </td></tr>
+  <tr><td>values : first cycle : <i>i = 0, j = 0,1,2 </i| 2nd : <i>i = 1, j = 0,1,2 </i>| 3rd : <i>i = 2, j = 0,1,2 </i>||</td></tr>
+  <tr><td>Using the second <i>for</i> loop allow us to store those values as Vector3 to instantiate our tiles right after.</td></tr>
+  <tr><td>I'm using <i>i</i> + 1 and <i>gridSize</i> - <i>j</i> as <i>Vector3.x</i> and <i>Vector3.z</i> respectively.</p></td></tr>
+  <tr><td>Today I replaced the <i>defaultTile</i> with a tile instantiator script which destroys the current tile when it is fed a new one.</td></tr>
+  <tr><td>So I had to model a few placeholder tiles : </td></tr><tr><td><img src="Assets/20.02.18/Tiles01.gif" align="center" width=584 heigth=340 title="Placeholders"></img></td></tr>
+  <tr><td>Then I played around with the <a href="http://forum.unity3d.com/threads/implement-a-drag-and-drop-script-with-c.130515/" target ="new" title ="Forums - Unity3D"><i>DragTransform</i> script by Tobias.J found here in the comments</a> to make it work with my <i>newTile</i> instancing system.</td></tr>
+  <tr><td>The new instancing system involves selecting an object by clicking on a button and handling it to any tile on the grid to be instantiated.</td></tr>
+  <tr><td>The buttons are using a <i>ButtonScript</i> public variable which copies it's content onto a similar <i>GameObject</i> variable in the <i>CursorScript</i>.</td></tr>
+  <tr><td>The <i>CursorScript</i> then delivers the stored <i>GameObject</i> to the tile instantiator via the modified <i>DragTransform</i>,</td></tr>
+  <tr><td>using a set of <i>if</i> conditions and booleans to ensure that I could do both <i>Click and Drop</i> and <i>Drag and Drop</i>.</td></tr>
+  <tr><td>Last thing I did was to add a 90° rotation increment system and switching the <i>ButtonScript</i>'s <i>GameObject</i> handler to a <i>List</i></td></tr>
+  <tr><td>which allow me to add some variety and could introduces tile types and my *probably upcoming* saving system.</td></tr>
+  <tr><td>Here's what a 'complete' map looks like :</td></tr>
+  <tr><td><img src="Assets/20.02.18/Grid02.gif" align="center" width=1167 heigth=460 title="Tilemap editor"></td></tr>
+
+  </table><br><hr>
   </body>
 </html>
