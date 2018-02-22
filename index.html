@@ -8,10 +8,38 @@
   <body>
   <h1 align="center">MattGen's Dev/Art Blog</h1>
   So yeah, I feel the need to have both a portfolio and a devblog.<br></br>Let's do this right !<br></br>
+  <h4>[22.02.18] Dev/Art Blog #2 - 360 video intro with Blender</h4>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/OlDhKF41w0I" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+   <table border = 0 cellspacing = 0 cellpadding = 0>
+  <tr height = 3><td>So I made this video during last october for some guy who's somewhat doing VR stuff, but he ended up being not respectful</td></tr>
+  <tr><td>at all, so I (quickly) patched his logo, but well this blog isn't about complaining, I'm here to talk about the making of process, mainly how to set up a 360 render in Blender.</td></tr>
+  <tr><td><p><img src="Assets/22.02.18/BlenderCam01.gif" align="center" width=578 heigth=290 title="Camera settings"></img></td></tr>
+  <tr><td>First of all, you'll have to set your rendering engine to <i>Cycles</i>, which will add the <i>"Equirectangular"</i> panoramic type to your camera settings.</td></tr>
+  <tr><td>Then you'll have to set your camera to position <i>z</i> = around 1.7 and rotation <i>x</i> or <i>y</i> = 90°. You can then rotate your cam around the global <i>z</i></td></tr>
+  <tr><td>to aim at a specific location. Note that your renderings could end up being very long so be sure to optimise your scenes as much as you can. In my video</td></tr>
+  <tr><td>example I actually optimised my scene almost as if it was meant to be runned at real-time : low poly buildings, almost all objects fitting on a single material, etc...</td></tr>
+  <tr><td>I also had some issues as finding things wrong after completing days long rendering times. My solution was to patch only parts of the image, which required</td></tr> 
+  <tr><td>re-rendering those parts. Using the camera's <i>min</i> and <i>max longitude</i> values, you can set the engine to render a smaller part of your scene, which introduces</td></tr>
+  <tr><td>my second figure about rendering and stereoscopy :</td></tr>
+  <tr><td><p><img src="Assets/22.02.18/BlenderRender01.gif" align="center" width=727 heigth=460 title="Rendering and stereoscopy settings"></img></td></tr>
+  <tr><td>It is very important that your rendering resolution matches the proportions of <i>x</i> = (2*<i>y</i>), otherwise you'll end up with a completely distorted picture.</td></tr>
+  <tr><td>Unless if you actually changed the values of min/max longitude and/or latitude, as those will spread over your entire rendering resolution. As I said it is very usefull</td></tr>
+  <tr><td>for patching things, but you'll have to use offsets later in the sequencer, which can some time be a bit troublesome as angles do not translate well to pixels.</td></tr>
+  <tr><td>That's why I ended up using vertical strips as patches, it's a fast and easy way to find the <i>x</i> position they should be. Note that with a bit more mastery</td></tr>
+  <tr><td>it is possible to use this to refresh only the parts of the image you want to be refreshed, which can help saving days of rendering time on a 360 video animation.</td></tr>
+  <tr><td>If you want to create a stereoscopic content be sure to check the <i>Views</i> checkbox in the <i>Scene</i> panel, it'll add the <i>Stereoscopy</i> parameters to your camera</td></tr>
+  <tr><td>settings. Stereoscopical 360 rendering must be set to <i>toe-in</i>, then set the </i>Convergence plane distance</i> between around 2 and 15, it actually depend on where your</td></tr>
+  <tr><td>focal points are, but beware : changing it during a video playback feels very unnatural. The default <i>interocular distance</i> should work fine on almost every sets</td></tr>
+  <tr><td>if your on a 1m = 1unit scale, but you may actually want to try other values. Lastly you should set your views format to <i>Stereo3D</i> if you're working on a stereo art,</td></tr>
+  <tr><td><i>top-bottom</i> is the way to go for VR headsets, while <i>anaglyph</i> refers to our beloved red-cyan glasses and such. Also be sure to render as an image format, even if</td></tr>
+  <tr><td>you're working on an animation, the reason for that is that your rendering times can be really long, as an image sequence you can pause it or having it crash and your progress will be saved.</td></tr>
+  <tr><td>Once your image sequence has rendered you can now encode it as a video file.</td></tr>
+  <tr><td></td></tr>
+   </table><br><hr>
   <h4>[20.02.18] Dev/Art Blog #1 - Tilemap editor in Unity</h4>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pa9eoe4HuEw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   <table border = 0 cellspacing = 0 cellpadding = 0>
-  <tr height = 3 margin-left = 120><td>I was kind of proud yesterday to complete a C# square grid generator which instantiated meshes from a gameobjects list.</td></tr>
+  <tr height = 3><td>I was kind of proud yesterday to complete a C# square grid generator which instantiated meshes from a gameobjects list.</td></tr>
   <tr><td>Here's how it worked :</td></tr> <tr><td><img src="Assets/20.02.18/Grid01.gif" align="center" width=616 heigth=424 title="Grid generator"></img></td></tr>
   <tr><td>So <i>gridSize</i> is a public Integer variable which determines both <i>x</i> and <i>y</i> size of the grid.</td></tr>
   <tr><td>Using a <i>for</i> loop, <i>i</i> increments on each loop. On each <i>i</i> incrementation, a new loop is launched which</td></tr>
